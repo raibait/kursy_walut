@@ -1,0 +1,23 @@
+.container {
+  overflow: hidden;
+  height: 100vh;
+}
+#sidepanel {
+}
+.sidebarr {
+  padding: 0px;
+  height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+  top: 0;
+  bottom: 0;
+}
+
+.sidebarr::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space */
+  background: transparent; /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+.sidebarr::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
