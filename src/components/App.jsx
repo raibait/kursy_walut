@@ -43,7 +43,11 @@ class App extends Component {
     }, 1000);
   };
 
-  applyFilter = filter => {
+  applyFilter = filter =>
+    this.setState(prevState => {
+      prevState.filterValue = filter;
+    });
+  /*   applyFilter = filter => {
     this.setState(prevState => {
       return {
         filteredData: prevState.data.filter(element => {
@@ -54,6 +58,18 @@ class App extends Component {
         })
       };
     });
+  }; */
+
+  filterData = data => {
+    console.log(data);
+    return {
+      filteredData: data.filter(element => {
+        //return (
+        //element.code.toUpperCase().indexOf(filter.toUpperCase()) !== -1 ||
+        //element.currency.toUpperCase().indexOf(filter.toUpperCase()) !== -1
+        //);
+      })
+    };
   };
 
   render() {
@@ -64,7 +80,7 @@ class App extends Component {
       ask: "530"
     };
     return (
-      <div className="container noselect">
+      <div className="container ">
         <div className="row page-header ">
           <div className="col-sm-12 text-center">
             <h1>Kursy walut</h1>
@@ -78,8 +94,8 @@ class App extends Component {
               <br />
             </div>
             <div className="row">
-              <div className="col sidebarr ">
-                <CurrenciesList data={this.state.filteredData} />
+              <div className="col sidebarColumn ">
+                <CurrenciesList data={this.filterData(this.state.data)} />
               </div>
             </div>
           </div>

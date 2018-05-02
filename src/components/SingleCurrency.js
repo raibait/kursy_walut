@@ -26,6 +26,9 @@ class SingleCurrency extends Component {
   };
 
   contentStylesActive = {
+    margin: "0%",
+    width: "100%",
+    height: "100%",
     backgroundColor: "rgb(37, 163, 54)"
   };
 
@@ -48,12 +51,12 @@ class SingleCurrency extends Component {
   render() {
     if (this.state.active) {
       this.contentStyles = {
-        ...this.contentStyles,
+        ...this.contentStylesStatic,
         ...this.contentStylesActive
       };
     } else if (this.state.hover) {
       this.contentStyles = {
-        ...this.contentStyles,
+        ...this.contentStylesStatic,
         ...this.contentStylesHover
       };
     } else {
