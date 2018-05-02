@@ -3,10 +3,24 @@ import React, { Component } from "react";
 class Filter extends Component {
   render() {
     return (
-      <div style={{ backgroundcolor: "red" }}>
+      <div
+        style={{
+          width: "inherit",
+          textAlign: "center",
+          margin: "15px",
+          backgroundcolor: "red"
+        }}
+      >
         <input
+          id="input"
+          style={{
+            borderRadius: "15px",
+            width: "inherit"
+          }}
           type="text"
-          onChange={event => this.props.filter}
+          onChange={event =>
+            this.props.applyFilter(document.getElementById("input").value)
+          }
           placeholder="Czego szukasz?"
         />
       </div>
