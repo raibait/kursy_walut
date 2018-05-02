@@ -14,32 +14,34 @@ class App extends Component {
 
   componentDidMount() {
     this.getData();
-  }
-
-  /*   componentDidUpdate() {
     this.setState(prevState => {
       return {
-        filteredData: prevState.data.filter(element => {
-          return element.code.indexOf(prevState.filterValue) !== -1;
-        })
+        filteredData: this.state.data
       };
     });
-  } */
+  }
 
   getData = () => {
+    // wartośći początkowe dla filtrowanych danych
+    axios.get("http://api.nbp.pl/api/exchangerates/tables/C").then(resp => {
+      this.setState(prevState => {
+        return {
+          filteredData: resp.data["0"].rates
+        };
+      });
+    });
+
+    //odświeżanie info co sekundę
     setInterval(() => {
       axios.get("http://api.nbp.pl/api/exchangerates/tables/C").then(resp => {
         this.setState(prevState => {
           return {
-            data: resp.data["0"].rates,
-            filter: ""
+            data: resp.data["0"].rates
           };
         });
       });
     }, 1000);
   };
-
-  //applyFilter = filter => this.setState({ filterValue: filter });
 
   applyFilter = filter => {
     this.setState(prevState => {

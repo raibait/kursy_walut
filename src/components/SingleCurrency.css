@@ -1,8 +1,14 @@
+.content {
+  background-color: rgb(203, 225, 247);
+  border-radius: 25px;
+  border-color: rgb(214, 135, 15);
+  border-width: 5px;
+}
 .content:hover {
-  position: static;
+  margin: 0%;
   width: 100%;
   height: 100%;
-  padding-bottom: 105%;
+  z-index: 2;
   background-color: rgb(75, 196, 196);
 }
 .content:active {
