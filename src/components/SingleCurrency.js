@@ -1,11 +1,66 @@
 import React, { Component } from "react";
-import "./SingleCurrency.css";
+
 class SingleCurrency extends Component {
   state = {
     hover: false,
     active: false
   };
+  contentStyles = {};
+  contentStylesStatic = {
+    position: "absolute",
+    height: "92%",
+    width: "92%",
+    textAlign: "center",
+    margin: "4%",
+    border: "2px solid blue",
+    backgroundColor: "rgb(203, 225, 247)",
+    borderRadius: "25px"
+  };
+
+  contentStylesHover = {
+    margin: "0%",
+    width: "100%",
+    height: "100%",
+    zIndex: "2",
+    backgroundColor: "rgb(75, 196, 196)"
+  };
+
+  contentStylesActive = {
+    backgroundColor: "rgb(37, 163, 54)"
+  };
+
+  toggleHover = () => {
+    this.setState(prevState => {
+      return {
+        hover: !this.state.hover
+      };
+    });
+  };
+
+  toggleActive = () => {
+    this.setState(prevState => {
+      return {
+        active: !this.state.active
+      };
+    });
+  };
+
   render() {
+    if (this.state.active) {
+      this.contentStyles = {
+        ...this.contentStyles,
+        ...this.contentStylesActive
+      };
+    } else if (this.state.hover) {
+      this.contentStyles = {
+        ...this.contentStyles,
+        ...this.contentStylesHover
+      };
+    } else {
+      this.contentStyles = {
+        ...this.contentStylesStatic
+      };
+    }
     return (
       <div
         className="SingleCurrency"
@@ -17,14 +72,10 @@ class SingleCurrency extends Component {
       >
         <div
           className="content"
-          style={{
-            position: "absolute",
-            height: "92%",
-            width: "92%",
-            textAlign: "center",
-            margin: "4%",
-            border: "2px solid blue"
-          }}
+          style={this.contentStyles}
+          onMouseEnter={this.toggleHover}
+          onMouseLeave={this.toggleHover}
+          onClick={this.toggleActive}
         >
           <div
             style={{ fontSize: "1.25em", fontWeight: "bold", width: "100%" }}

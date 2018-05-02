@@ -64,7 +64,7 @@ class App extends Component {
       ask: "530"
     };
     return (
-      <div className="container">
+      <div className="container noselect">
         <div className="row page-header ">
           <div className="col-sm-12 text-center">
             <h1>Kursy walut</h1>

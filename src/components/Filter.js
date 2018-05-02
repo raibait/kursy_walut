@@ -7,14 +7,14 @@ class Filter extends Component {
         style={{
           width: "inherit",
           textAlign: "center",
-          margin: "15%",
+          margin: "10%",
           backgroundcolor: "red"
         }}
       >
         <input
           id="input"
           style={{
-            borderRadius: "15px",
+            borderRadius: "10px",
             width: "inherit",
             outline: "none"
           }}
