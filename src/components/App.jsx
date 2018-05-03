@@ -8,29 +8,14 @@ import SingleCurrency from "./SingleCurrency";
 class App extends Component {
   state = {
     data: [],
-    filteredData: [],
     filterValue: ""
   };
 
   componentDidMount() {
     this.getData();
-    this.setState(prevState => {
-      return {
-        filteredData: this.state.data
-      };
-    });
   }
 
   getData = () => {
-    // wartośći początkowe dla filtrowanych danych
-    axios.get("http://api.nbp.pl/api/exchangerates/tables/C").then(resp => {
-      this.setState(prevState => {
-        return {
-          filteredData: resp.data["0"].rates
-        };
-      });
-    });
-
     //odświeżanie info co sekundę
     setInterval(() => {
       axios.get("http://api.nbp.pl/api/exchangerates/tables/C").then(resp => {
@@ -47,29 +32,15 @@ class App extends Component {
     this.setState(prevState => {
       prevState.filterValue = filter;
     });
-  /*   applyFilter = filter => {
-    this.setState(prevState => {
-      return {
-        filteredData: prevState.data.filter(element => {
-          return (
-            element.code.toUpperCase().indexOf(filter.toUpperCase()) !== -1 ||
-            element.currency.toUpperCase().indexOf(filter.toUpperCase()) !== -1
-          );
-        })
-      };
-    });
-  }; */
 
-  filterData = data => {
+  filterData(data) {
     console.log(data);
-    return {
-      filteredData: data.filter(element => {
-        //return (
-        //element.code.toUpperCase().indexOf(filter.toUpperCase()) !== -1 ||
-        //element.currency.toUpperCase().indexOf(filter.toUpperCase()) !== -1
-        //);
-      })
-    };
+    return data.filter(element => {
+      return (
+        element.code.toUpperCase().indexOf(this.state.filterValue.toUpperCase()) !== -1 ||
+        element.currency.toUpperCase().indexOf(this.state.filterValue.toUpperCase()) !== -1
+      )
+    });
   };
 
   render() {
@@ -87,13 +58,14 @@ class App extends Component {
           </div>
         </div>
         <hr />
-        <div className="row">
+        <div className="row" >
+
           <div id="sidepanel" className="col col-sm-3  text-center">
-            <div className="row ">
+            <div className="row" >
               <Filter applyFilter={this.applyFilter} />
               <br />
             </div>
-            <div className="row">
+            <div className="row" >
               <div className="col sidebarColumn ">
                 <CurrenciesList data={this.filterData(this.state.data)} />
               </div>
@@ -103,6 +75,7 @@ class App extends Component {
           <div className="col">
             <SingleCurrency {...test} />
           </div>
+
         </div>
       </div>
     );
