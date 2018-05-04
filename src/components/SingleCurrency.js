@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 
 class SingleCurrency extends Component {
-  state = {
-    hover: false,
-    active: false
-  };
+  state = { hover: false };
   contentStyles = {};
   contentStylesStatic = {
     position: "absolute",
@@ -41,15 +38,11 @@ class SingleCurrency extends Component {
   };
 
   toggleActive = () => {
-    this.setState(prevState => {
-      return {
-        active: !this.state.active
-      };
-    });
+    this.props.setActiveCurrency(this.props.code);
   };
 
   render() {
-    if (this.state.active) {
+    if (this.props.activeCurrency === this.props.code) {
       this.contentStyles = {
         ...this.contentStylesStatic,
         ...this.contentStylesActive
@@ -64,6 +57,7 @@ class SingleCurrency extends Component {
         ...this.contentStylesStatic
       };
     }
+    console.log(this.props);
     return (
       <div
         className="SingleCurrency"
