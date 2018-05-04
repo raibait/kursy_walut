@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 import CurrenciesList from "./CurrenciesList";
 import Filter from "./Filter";
-import SingleCurrency from "./SingleCurrency";
+import CurrencyInfo from "./CurrencyInfo";
 
 class App extends Component {
   state = {
@@ -47,45 +47,44 @@ class App extends Component {
     });
   };
 
-  addMethods = data => {
-    for (let i = 0; i < data.length; i++) {
-      data[i].setActiveCurrency = currencyCode => {
-        if (this.state.activeCurrency === currencyCode) {
-          this.setState({ activeCurrency: "" });
-        } else {
-          this.setState({ activeCurrency: currencyCode });
-        }
-      };
-      data[i].activeCurrency = this.state.activeCurrency;
+  setActiveCurrency = currencyCode => {
+    if (this.state.activeCurrency === currencyCode) {
+      this.setState({ activeCurrency: "" });
+    } else {
+      this.setState({ activeCurrency: currencyCode });
     }
-    return data;
   };
 
   render() {
     return (
-      <div className="container ">
-        <div className="row page-header ">
+      <div className="container">
+        <div className="row page-header">
           <div className="col-sm-12 text-center">
             <h1>Kursy walut</h1>
           </div>
         </div>
         <hr />
         <div className="row">
-          <div id="sidepanel" className="col col-sm-3  text-center">
+          <div id="sidepanel" className="col col-sm-3 text-center">
             <div className="row">
               <Filter applyFilter={this.applyFilter} />
               <br />
             </div>
             <div className="row">
-              <div className="col sidebarColumn ">
+              <div className="col sidebarColumn">
                 <CurrenciesList
-                  data={this.addMethods(this.filterData(this.state.data))}
+                  setActiveCurrency={this.setActiveCurrency}
+                  activeCurrency={this.state.activeCurrency}
+                  data={this.filterData(this.state.data)}
                 />
               </div>
             </div>
           </div>
-
-          <div className="col">{this.state.activeCurrency}</div>
+          <div className="col">
+            {this.state.activeCurrency !== "" && (
+              <CurrencyInfo activeCurrency={this.state.activeCurrency} />
+            )}
+          </div>
         </div>
       </div>
     );

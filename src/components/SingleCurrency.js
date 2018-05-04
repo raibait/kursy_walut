@@ -57,7 +57,7 @@ class SingleCurrency extends Component {
         ...this.contentStylesStatic
       };
     }
-    console.log(this.props);
+
     return (
       <div
         className="SingleCurrency"

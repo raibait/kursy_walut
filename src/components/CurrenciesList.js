@@ -3,16 +3,11 @@ import SingleCurrency from "./SingleCurrency";
 
 class CurrenciesList extends Component {
   state = {
-    hoveredCurrency: "",
     activeCurrency: ""
   };
 
-  setHoveredCurrency = currencyCode => {
-    return this.setState({ hoveredCurrency: currencyCode });
-  };
-
   setActiveCurrency = currencyCode => {
-    return this.setState({ activeCurrency: currencyCode });
+    return this.props.setActiveCurrency(currencyCode);
   };
 
   render() {
@@ -20,7 +15,12 @@ class CurrenciesList extends Component {
       <div>
         <div>
           {this.props.data.map((data, i) => (
-            <SingleCurrency key={i} {...data} />
+            <SingleCurrency
+              key={i}
+              {...data}
+              setActiveCurrency={this.setActiveCurrency}
+              activeCurrency={this.props.activeCurrency}
+            />
           ))}
         </div>
       </div>
