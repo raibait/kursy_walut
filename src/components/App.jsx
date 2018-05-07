@@ -70,7 +70,7 @@ class App extends Component {
               <Filter applyFilter={this.applyFilter} />
               <br />
             </div>
-            <div className="row">
+            <div className="row wrap">
               <div className="col sidebarColumn">
                 <CurrenciesList
                   setActiveCurrency={this.setActiveCurrency}

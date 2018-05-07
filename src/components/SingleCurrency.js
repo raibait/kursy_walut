@@ -9,7 +9,7 @@ class SingleCurrency extends Component {
     width: "92%",
     textAlign: "center",
     margin: "4%",
-    border: "2px solid blue",
+    border: "1px solid black",
     backgroundColor: "rgb(203, 225, 247)",
     borderRadius: "25px"
   };
@@ -19,6 +19,7 @@ class SingleCurrency extends Component {
     width: "100%",
     height: "100%",
     zIndex: "2",
+    border: "2px solid black",
     backgroundColor: "rgb(75, 196, 196)"
   };
 
@@ -26,6 +27,7 @@ class SingleCurrency extends Component {
     margin: "0%",
     width: "100%",
     height: "100%",
+    border: "2px solid black",
     backgroundColor: "rgb(37, 163, 54)"
   };
 
@@ -92,7 +94,7 @@ class SingleCurrency extends Component {
           />
           <div>
             <div>
-              Kupno: {this.props.bid} <br /> Sprzedaż: {this.props.ask}
+              Kupno: {this.props.ask} <br /> Sprzedaż: {this.props.bid}
             </div>
           </div>
         </div>
