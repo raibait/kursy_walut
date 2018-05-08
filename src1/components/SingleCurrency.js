@@ -10,7 +10,7 @@ class SingleCurrency extends Component {
     textAlign: "center",
     margin: "4%",
     border: "1px solid black",
-    backgroundColor: "rgb(50, 56, 62)",
+    backgroundColor: "rgb(203, 225, 247)",
     borderRadius: "25px"
   };
 
@@ -20,20 +20,17 @@ class SingleCurrency extends Component {
     height: "100%",
     zIndex: "2",
     border: "2px solid black",
-    backgroundColor: "rgb(82,91,94)"
+    backgroundColor: "rgb(75, 196, 196)"
   };
 
   contentStylesActive = {
     margin: "0%",
     width: "100%",
     height: "100%",
-    border: "2px solid white",
-    backgroundColor: "rgb(82,91,94)"
+    border: "2px solid black",
+    backgroundColor: "rgb(37, 163, 54)"
   };
-  fontStyles = {
-    fontSize: "1.25em",
-    fontWeight: "bold"
-  };
+
   toggleHover = () => {
     this.setState(prevState => {
       return {
@@ -79,9 +76,15 @@ class SingleCurrency extends Component {
           onMouseLeave={this.toggleHover}
           onClick={this.toggleActive}
         >
-          <div style={this.fontStyles}>{this.props.currency}</div>
-          <div style={this.fontStyles}>{this.props.code}</div>
-          <hr style={{ backgroundColor: "white" }} />
+          <div
+            style={{ fontSize: "1.25em", fontWeight: "bold", width: "100%" }}
+          >
+            {this.props.currency}
+          </div>
+          <div style={{ fontSize: "1.25em", fontWeight: "bold" }}>
+            {this.props.code}
+          </div>
+          <hr />
           <img
             className="img"
             style={{ float: "left", width: "50%", borderRadius: "20px" }}
@@ -91,15 +94,7 @@ class SingleCurrency extends Component {
           />
           <div>
             <div>
-              <i>
-                Kupno: <br />
-                {this.props.ask}
-              </i>
-              <br />
-              <i>
-                Sprzedaż: <br />
-                {this.props.bid}
-              </i>
+              Kupno: {this.props.ask} <br /> Sprzedaż: {this.props.bid}
             </div>
           </div>
         </div>

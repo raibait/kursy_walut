@@ -2,19 +2,21 @@
   overflow: hidden;
   height: 100vh;
 }
-#root {
-  background-color: rgb(79, 81, 82);
-  color: rgb(230, 230, 230);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+#sidepanel {
 }
-
+.wrap {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
 .sidebarColumn {
   padding: 0px;
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
   position: relative;
   top: 0;
   bottom: 0;
+  flex: 1;
 }
 
 .sidebarColumn::-webkit-scrollbar {
@@ -27,8 +29,4 @@
 }
 .row {
   width: 100%;
-}
-
-.page-header {
-  height: 100px;
 }

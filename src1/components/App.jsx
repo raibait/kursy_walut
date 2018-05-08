@@ -58,20 +58,20 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row page-header " style={{ padding: "15px" }}>
+        <div className="row page-header">
           <div className="col-sm-12 text-center">
             <h1>Kursy walut</h1>
           </div>
         </div>
-        <hr style={{ backgroundColor: "white" }} />
+        <hr />
         <div className="row">
-          <div id="sidePanel" className="col col-sm-3 text-center no-float">
+          <div id="sidepanel" className="col col-sm-3 text-center">
             <div className="row">
               <Filter applyFilter={this.applyFilter} />
               <br />
             </div>
-            <div className="row ">
-              <div className="col sidebarColumn" style={{ padding: "15px" }}>
+            <div className="row wrap">
+              <div className="col sidebarColumn">
                 <CurrenciesList
                   setActiveCurrency={this.setActiveCurrency}
                   activeCurrency={this.state.activeCurrency}
@@ -80,7 +80,7 @@ class App extends Component {
               </div>
             </div>
           </div>
-          <div className="col col-sm-9 text-center  no-float">
+          <div className="col">
             {this.state.activeCurrency !== "" && (
               <CurrencyInfo activeCurrency={this.state.activeCurrency} />
             )}

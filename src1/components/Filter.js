@@ -7,7 +7,8 @@ class Filter extends Component {
         style={{
           width: "inherit",
           textAlign: "center",
-          margin: "10%"
+          margin: "10%",
+          backgroundcolor: "red"
         }}
       >
         <input
@@ -15,9 +16,7 @@ class Filter extends Component {
           style={{
             borderRadius: "10px",
             width: "inherit",
-            outline: "none",
-            backgroundColor: "rgb(50, 56, 62)",
-            color: "inherit"
+            outline: "none"
           }}
           type="text"
           onChange={event =>

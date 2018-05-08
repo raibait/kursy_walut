@@ -5,12 +5,19 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.1.0",
+    "fb-watchman": "^2.0.0",
+    "pikaday": "^1.7.0",
+    "pikaday-react": "0.0.0-alpha.1",
     "react": "^16.3.2",
     "react-axios": "^2.0.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
     "react-fontawesome": "^1.6.1",
-    "react-scripts": "1.1.4"
+    "react-pikaday": "^0.5.1",
+    "react-pikaday-component": "^2.1.4",
+    "react-scripts": "1.1.4",
+    "watchman": "^1.0.0",
+    "webpack": "^4.8.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -51,36 +51,30 @@ class CurrencyHistoryTable extends Component {
   render() {
     return (
       <div>
-        <table
-          className="table table-striped table-dark"
-          style={{ width: "100%", color: "inherit" }}
-        >
-          <thead>
-            <tr style={this.tableHeaderStyle}>
-              <th>Data</th>
-              <th>Kupno</th>
-              <th>Sprzedaż</th>
-              <th>Trend</th>
+        <table style={{ width: "100%" }}>
+          <tr style={this.tableHeaderStyle}>
+            <th>Data</th>
+            <th>Kupno</th>
+            <th>Sprzedaż</th>
+            <th>Trend</th>
+          </tr>
+
+          {this.props.data.map((data, i) => (
+            <tr key={i}>
+              <td style={this.fnTableCellStyle(data, i)}>
+                {this.props.data[i].effectiveDate}
+              </td>
+              <td style={this.fnTableCellStyle(data, i)}>
+                {this.props.data[i].ask}
+              </td>
+              <td style={this.fnTableCellStyle(data, i)}>
+                {this.props.data[i].bid}
+              </td>
+              <td style={this.fnTableCellStyle(data, i)}>
+                {this.pickTrend(this.props.data[i].state)}
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {this.props.data.map((data, i) => (
-              <tr key={i}>
-                <td style={this.fnTableCellStyle(data, i)}>
-                  {this.props.data[i].effectiveDate}
-                </td>
-                <td style={this.fnTableCellStyle(data, i)}>
-                  {this.props.data[i].ask}
-                </td>
-                <td style={this.fnTableCellStyle(data, i)}>
-                  {this.props.data[i].bid}
-                </td>
-                <td style={this.fnTableCellStyle(data, i)}>
-                  {this.pickTrend(this.props.data[i].state)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          ))}
         </table>
       </div>
     );

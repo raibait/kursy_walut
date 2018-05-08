@@ -3,17 +3,9 @@ import axios from "axios";
 import CurrencyHistoryTable from "./CurrencyHistoryTable";
 
 class CurrencyInfo extends Component {
-  inputStyles = {
-    borderRadius: "10px",
-    width: "20%",
-    outline: "none",
-    backgroundColor: "rgb(50, 56, 62)",
-    color: "rgb(230, 230, 230)"
-  };
-
   state = {
     data: [],
-    dateStart: this.getDate(1),
+    dateStart: "2018-04-07",
     dateEnd: this.getDate()
   };
 
@@ -21,12 +13,8 @@ class CurrencyInfo extends Component {
     this.getData();
   }
 
-  componentDidUpdate(prevPorps, prevState) {
-    if (
-      prevPorps.activeCurrency !== this.props.activeCurrency ||
-      prevState.dateStart !== this.state.dateStart ||
-      prevState.dateEnd !== this.state.dateEnd
-    ) {
+  componentDidUpdate(prevPorps) {
+    if (prevPorps.activeCurrency !== this.props.activeCurrency) {
       this.getData();
     }
   }
@@ -70,11 +58,10 @@ class CurrencyInfo extends Component {
 
     return resp;
   };
-  getDate(monthsBack) {
-    monthsBack = monthsBack || 0;
+  getDate() {
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth() + 1 - monthsBack; //January is 0!
+    var mm = today.getMonth() + 1; //January is 0!
     var yyyy = today.getFullYear();
 
     if (dd < 10) {
@@ -95,38 +82,39 @@ class CurrencyInfo extends Component {
         <div style={{ width: "100%" }}>
           <h4>Historyczne kursy wybranej waluty</h4>
         </div>
-        <hr style={{ backgroundColor: "white" }} />
         <br />
         <div>
-          Od:&nbsp;
+          Od:
           <input
-            id="inputStartDate"
-            style={this.inputStyles}
+            style={{
+              borderRadius: "10px",
+              width: "15%",
+              outline: "none"
+            }}
             type="text"
-            onChange={() =>
-              this.setState({
-                dateStart: document.getElementById("inputStartDate").value
-              })
-            }
+            //onChange={event =>
+            //this.props.applyFilter(document.getElementById("input").value)
+            //}
             value={this.state.dateStart}
-            placeholder="format: yyyy-mm-dd"
+            placeholder="format: yyyy-mm-dd "
           />
-          Do:&nbsp;
+          Do:
           <input
-            id="inputEndDate"
-            style={this.inputStyles}
+            style={{
+              borderRadius: "10px",
+              width: "15%",
+              outline: "none"
+            }}
             type="text"
-            onChange={() =>
-              this.setState({
-                dateEnd: document.getElementById("inputEndDate").value
-              })
-            }
+            //onChange={event =>
+            //this.props.applyFilter(document.getElementById("input").value)
+            //}
             value={this.state.dateEnd}
-            placeholder="format: yyyy-mm-dd"
+            placeholder="format: yyyy-mm-dd "
           />
         </div>
         <br />
-        <div style={{ height: "600px", overflowY: "auto" }}>
+        <div>
           <CurrencyHistoryTable data={this.state.data} />
         </div>
       </div>
